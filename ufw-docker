@@ -106,11 +106,11 @@ function ufw-docker--add-rule() {
     }
     UFW_OPTS+=(comment "$comment")
 
-    if ufw-docker--list "$INSTANCE_NAME" "$PORT" "$PROTO" &>/dev/null; then
-        ufw --dry-run "${UFW_OPTS[@]}" | grep "^Skipping" && return 0
-        err "Remove outdated rule."
-        ufw-docker--delete "$INSTANCE_NAME" "$PORT" "$PROTO"
-    fi
+    # if ufw-docker--list "$INSTANCE_NAME" "$PORT" "$PROTO" &>/dev/null; then
+    #     ufw --dry-run "${UFW_OPTS[@]}" | grep "^Skipping" && return 0
+    #     err "Remove outdated rule."
+    #     ufw-docker--delete "$INSTANCE_NAME" "$PORT" "$PROTO"
+    # fi
     echo ufw "${UFW_OPTS[@]}"
     ufw "${UFW_OPTS[@]}"
 }
